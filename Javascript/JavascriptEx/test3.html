@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회사의 설립목적과 경영이념 문자열을 마치 타이핑 치는 효과주기</title>
+<style>
+	#img { width : 400px; height : 200 px}
+</style>
+<script>
+   var imgs = new Array() 
+   
+   // 추가 3번쨰 해결책
+   var index = 0;
+   
+   imgs.push("./images/img1.jpg")
+   imgs.push("./images/img2.jpg")
+   imgs.push("./images/img3.jpg")
+   imgs.push("./images/img4.jpg")
+   
+   var imageText = new Array();
+  
+   imageText.push("이미지 텍스트1")
+   imageText.push("이미지 텍스트2")
+   imageText.push("이미지 텍스트3")
+   imageText.push("이미지 텍스트4")
+   
+  
+
+	window.onload = function() {		// 콜백 함수
+		setInterval("imageChange()", 2000)	// 1초마다 imageChange() 함수 호출
+	}
+	
+	function imageChange(){
+		/* var currentDate = new Date()
+		var img = document.getElementById("img")
+		// img.src = imgs[(currentDate.getSeconds()/2) % 4]; //1번째 방법
+		img.src = imgs[Math.ceil(currentDate.getSeconds()/2) % 4]; // 2번쨰 방법
+	} */
+  	
+		// 세번째 방법 - 가독성이 더 좋음
+		var img = document.getElementById("img")
+		// 텍스트 추가
+		var text = document.getElementById("text")
+		img.src = imgs[index];
+		
+		
+		// 텍스트 추가
+		text.textContent = imageText[index];
+		index++;
+		
+		if(index == imgs.length)index = 0;
+	}
+</script>
+</head>
+<body>
+   <center>
+   		<h1>(주)휴먼 소프트웨어 동적 교체</h1>
+   		<img id = "img" />
+   		<h3 id = "text"/>
+   	</center>
+</body>
+</html>

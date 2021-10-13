@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>회원가입 </title>
+<style>
+.center {
+	text-align : center;
+}
+.right {
+	text-align : right;
+}
+div.right, table{
+	width : 1000px;
+}
+div.right {
+	width : 1000px;
+	test-align : right;
+	margin : 0 auto;
+	}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script> 
+<script>
+$(document).ready(function(){
+	var now = new Date(); 
+	var year = now.getFullYear();
+	var mon = (now.getMonth() + 1) > 9 ? ''+(now.getMonth() + 1) : '0'+(now.getMonth() + 1); 
+	
+	var day = (now.getDate()) > 9 ? ''+(now.getDate()) : '0'+(now.getDate()); //년도 selectbox만들기 
+	
+	for(var i = 1900 ; i <= year ; i++) { 
+		$('#year').append('<option value="' + i + '">' + i + '년</option>'); 
+		} // 월별 selectbox 만들기 
+		for(var i=1; i <= 12; i++) {
+			var mm = i > 9 ? i : "0"+i ; 
+			$('#month').append('<option value="' + mm + '">' + mm + '월</option>'); 
+			} // 일별 selectbox 만들기 
+			for(var i=1; i <= 31; i++) { 
+				var dd = i > 9 ? i : "0"+i ; 
+				$('#day').append('<option value="' + dd + '">' + dd+ '일</option>'); 
+				} $("#year > option[value="+year+"]").attr("selected", "true"); 
+				$("#month > option[value="+mon+"]").attr("selected", "true"); 
+				$("#day > option[value="+day+"]").attr("selected", "true");
+				})
+</script>
+</head>
+<body>
+<h2 class="center">회원가입</h2>
+<div class="right">
+	 * 필수입력사항 
+</div>
+
+	<form action="mailto:jessicasla@nate.com?subject=회원 가입"
+		enctype="text/plain" method="post">
+		<!--밑에 submit 누르면 메일로 보내짐-->
+		<table border="1px" align="center">
+			<tbody>
+				<tr>
+					<td colspan="2" bgcolor="orange" align="center">회원 기본 정보</td>
+				</tr>
+				<tr>
+					<td align="center">아이디</td>
+					<td><input size="20" type="text" name="id" Placeholder="8자리 이상의 영문과 숫자"><button>ID중복확인</button></td>
+				</tr>
+				<tr>
+					<td align="center">비밀번호</td>
+					<td><input size="15" type="password" name="password">
+						8~12자의 영문 대소문자와 숫자, 특수문자만 입력</td>
+				</tr>
+				<tr>
+					<td align="center">비밀번호 확인</td>
+					<td><input size="15" type="password" name="password_check"></td>
+				</tr>
+				<tr>
+					<td align="center">이름</td>
+					<td><input type="text" name="name"></td>
+				</tr>
+				<tr>
+					<td align="center">닉네임</td>
+					<td><input type="text" name="nickname"></td>
+				</tr>
+				<tr>
+					<td align="center">이메일</td>
+					<td><input type="" name="mail"></td>
+				</tr>
+				
+				<tr>
+					<td align="center">주민번호</td>
+					<td><input size="7" type="text" name="id_num"> - <input
+						size="7" type="password" name="id_num_back"><button>주민번호 정상 유무 체크</button>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">휴대폰</td>
+					<td><input size="15" type="text" name="phone">
+						예)010-1234-5678</td>
+				</tr>
+				<tr>
+					<td align="center">성별</td>
+					<td><input type="radio" name="chk_info" value="male">남성
+						<input type="radio" name="chk_info" value="female">여성
+				</tr>
+				<tr>
+					<td align="center">생년월일</td>
+					<td> 
+					<select name="yy" id="year"></select>년 
+					<select name="mm" id="month"></select>월 
+					<select name="dd" id="day"></select>일
+					</td>
+				</tr>
+				<tr>
+					<td align="center">직업</td>
+					<td> 
+					<select id="job">
+							<option value="1">직업선택</option>
+							<option value="2">석유뷰자</option>
+							<option value="3">취준생</option>
+							<option value="4">개발자</option>
+					</select>
+				</tr>
+				<tr>
+					<td align="center">주소</td>
+					<td><input size="20" type="text" name="address1" Placeholder="우편번호"><button>우편번호 찾기</button><br>
+						<input size="50" type="text" name="address2" Placeholder="주소"><br>
+						<input size="30" type="text" name="address3" Placeholder="참고항목(도로명인 경우:지역 동이름과 아파트이름)">
+						<input size="30" type="text" name="address4" Placeholder="상세주소(아파트 동호수, 또는 빌딩이름 입력 요!)">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p align="center">
+			<input type="submit" value="회원 가입">
+			<!--누르면 메일이 보내짐-->
+			<input type="reset" value="다시 쓰기">
+			<!--누르면 초기화-->
+		</p>
+	</form>
+</body>
+</html>
+
