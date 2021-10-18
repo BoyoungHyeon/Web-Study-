@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>tabs JQuery UI 예제</titlez>
+<!-- 코딩 순서가 중요 -->
+<!-- JQuery 인클루드 -->
+<script src="js/jquery.js"></script>
+
+<!-- JQuery UI 인클루드 -->
+<script src="js/jquery-ui-1.8.16.custon.min.js"></script>
+
+<script>
+	$(document).ready(function (){
+		$("#example").tabs;'
+	});
+</script>
+</head>
+<body>
+	<div id="example">
+		<ul>
+			<li><a href="#tab1">교보문고 추천도서</a></li>
+			<li><a href="#tab2">베스트셀러</a></li>
+			<li><a href="#tab3">신간도서</a></li>
+		</ul>
+		<div id="tab1">
+			<img src="images/5.jpg" width="170" height="200">
+		</div>
+		
+		<div id="tab2">
+			<img src="images/6.jpg" width="170" height="200">
+		</div>
+		
+		<div id="tab3">
+			<img src="images/7.jpg" width="170" height="200">
+		</div>
+	</div>
+</body>
+</html>
