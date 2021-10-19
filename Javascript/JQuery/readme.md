@@ -6,9 +6,10 @@
 ### datapicker
 ![image](https://user-images.githubusercontent.com/49936027/137868994-d86c7651-cdfc-44d6-b048-5fc2531e720d.png)
 
-[datapicker 예제1](./Javascript/JQuery/datepickerEx01.html)
+https://github.com/BoyoungHyeon/Web-Study-/blob/main/Javascript/JQuery/datepickerEx01.html
+
 
 ![image](https://user-images.githubusercontent.com/49936027/137869233-fe4cbe3e-ac7c-4078-acec-442e198ecbb6.png)
 
-[datapicker 예제2](./Javascript/JQuery/datepickerEx02.html)
+https://github.com/BoyoungHyeon/Web-Study-/blob/main/Javascript/JQuery/datepickerEx2.html
 
