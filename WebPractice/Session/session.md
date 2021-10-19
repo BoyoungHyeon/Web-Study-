@@ -3,6 +3,7 @@
 ## Session
 ![image](https://user-images.githubusercontent.com/49936027/137866467-5baad017-6b90-4434-9e34-d332b0b5e67f.png)
 ![image](https://user-images.githubusercontent.com/49936027/137866476-3a07e9ad-c09b-437e-8ba1-14e73f0c959e.png)
+
 Session과 웹 브라우저의 관계
 
 ## Session 주요 메서드
