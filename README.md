@@ -15,7 +15,7 @@
 
 ## Javascript 🔨
 [datapicker 함수 활용](./Javascript/JQuery/readme.md)
-[datapicker 함수 활용](./Javascript/JQuery/bootstrap/부트스트랩 버튼10-18.md)
+[bootstrap 사용](./Javascript/JQuery/bootstrap/부트스트랩%20버튼10-18.md)
 
 
   
