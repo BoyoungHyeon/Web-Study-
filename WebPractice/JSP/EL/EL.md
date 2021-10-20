@@ -55,5 +55,7 @@ https://github.com/BoyoungHyeon/Web-Study-/blob/main/WebPractice/JSP/EL/source/f
 #### viePage.jsp
 ![image](https://user-images.githubusercontent.com/49936027/138054988-471ee89d-d521-4c18-80fe-0b33821de85b.png)
 
+MultipartRequest 클래스는 파일 업로드를 직접적으로 담당하는 클래스이다.
+
 https://github.com/BoyoungHyeon/Web-Study-/blob/main/WebPractice/JSP/EL/source/viewPage.jsp****
 
