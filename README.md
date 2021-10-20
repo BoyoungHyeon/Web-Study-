@@ -23,6 +23,9 @@
 
 ## JSP 🎇
 [JSTL](./WebPractice/JSP/JSTL/JSTL.md)
+
+[errorPage 생성](./WebPractice/JSP/errorpage실습/errorpage.md)
+
   
 ## Web 💻
 [Session과 Sesion의 주요 메서드](./WebPractice/Session/session.md)
