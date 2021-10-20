@@ -26,7 +26,7 @@
 
 [errorPage 생성](./WebPractice/JSP/errorpage실습/errorpage.md)
 
-[EL 표현식](./WebPractice/JSP/EL/EL.md)
+[EL 표현 언어](./WebPractice/JSP/EL/EL.md)
 
 [JSP 내장객체 주요 메서드 1](.//WebPractice/JSP/JSP기본객체(내장객체)/request메소드/getParameter/getParameter.md)
 
