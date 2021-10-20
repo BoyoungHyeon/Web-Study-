@@ -1,4 +1,4 @@
-#표현 언어(EL)
+# 표현 언어(EL)
 
 ## 표현 언어(EL)
  - 표현 언어(Expression Language)는 처음 JSTL(JSP Standard Tag Library)이 소 개되었을 때 나온 것으로, SPEL(Simplest Possible Expression Language)에 기 본을 두고 있다
