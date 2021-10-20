@@ -19,6 +19,10 @@
 [bootstrap 사용](./Javascript/JQuery/bootstrap/부트스트랩%20버튼10-18.md)
 
 
+
+
+## JSP 🎇
+[JSTL](./WebPractice/JSP/JSTL/JSTL.md)
   
 ## Web 💻
 [Session과 Sesion의 주요 메서드](./WebPractice/Session/session.md)
