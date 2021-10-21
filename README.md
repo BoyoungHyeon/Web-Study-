@@ -34,7 +34,11 @@
 [JSP 내장객체 주요 메서드 1](.//WebPractice/JSP/JSP기본객체(내장객체)/request메소드/getParameter/getParameter.md)
 
 
-  
+## Mybatis ⌨️
+[Mybatis란?](./WebPractice/Mybatis/Mybatis.md)
+
+[Mybatis연동 웹페이지 구현](./WebPractice/Mybatis/Sqlsession/테이블%20사원추가%20예제/readme.md)
+
 ## Web 💻
 [Session과 Sesion의 주요 메서드](./WebPractice/Session/session.md)
 
