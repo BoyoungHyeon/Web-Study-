@@ -18,7 +18,7 @@
 
 [bootstrap 사용](./Javascript/JQuery/bootstrap/부트스트랩%20버튼10-18.md)
 
-[테이블 행 추가/삭제하기-insertRow()/deleteRow()](./Javascript/JavascriptEx/addRow(), deleteRow()/addRow(), deleteRow().md)
+[테이블 행 추가/삭제하기-insertRow()/deleteRow()](./Javascript/JavascriptEx/addRow(),%20deleteRow()/addRow(),%20deleteRow().md)
 
 
 
