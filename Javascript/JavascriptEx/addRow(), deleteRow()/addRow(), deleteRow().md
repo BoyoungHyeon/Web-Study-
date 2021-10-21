@@ -1,6 +1,6 @@
-# addRow(), deleteRow()
+# 테이블 행 추가/삭제하기
 
-## insertRow() , deleteRow()
+## addRow(), insertRow(), insertCell, deleteRow()
 |함수|내용|
 |------|---|
 |insertRow()|
