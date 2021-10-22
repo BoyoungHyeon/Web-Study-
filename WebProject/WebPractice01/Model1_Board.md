@@ -1,5 +1,9 @@
 # Model1_Board
 
+## Model 1 구조
+![image](https://user-images.githubusercontent.com/49936027/138414761-5b3fd4ea-01cd-44dc-a5ab-09035d6f706b.png)
+
+
 ## 소스 코드
 
 ![image](https://user-images.githubusercontent.com/49936027/138413295-e3045f28-5205-467f-b026-3e5edc0a98a7.png)
