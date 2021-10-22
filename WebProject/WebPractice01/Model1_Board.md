@@ -81,6 +81,10 @@ select * from board;
 ![image](https://user-images.githubusercontent.com/49936027/138413689-c3a9dc73-52b2-4205-a6ac-7c14cbc035f9.png)
 
 
+### 프로젝트 구조
+![image](https://user-images.githubusercontent.com/49936027/138417611-29e328fc-eca7-4b00-93cc-e2745579d48f.png)
+
+
 
 ### UserDO.java
 ```java
