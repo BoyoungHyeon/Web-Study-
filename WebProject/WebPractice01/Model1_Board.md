@@ -179,7 +179,7 @@ public class BoardDO {
 }
  ```
  
-### BoardDAO.java
+### BoardDAO.java (10/25 추가)
 ```java
  package board;
 
@@ -217,7 +217,7 @@ public class BoardDAO {
             where = "where "+ searchField + " like '%" + searchText+"%'";
          }
          
-         System.out.println("where: "+where);
+         System.out.println("where: " + where);
 
          String Condition_SQL = "select * from board "+ where +" order by seq desc";
 
@@ -244,7 +244,126 @@ public class BoardDAO {
       }
       
       return boardList;
-   }
+   } // ======================================= end getBoardList() =================================================
+   
+ //게시글 번호 조건에 맞는 해당 게시글만 검색하는 메소드
+   public BoardDO getBoard(BoardDO boardDO) {
+      System.out.println("==> getBoard() 처리됨");
+      
+      BoardDO board = null;
+      
+      try {
+         conn = JDBCUtil.getConnection();
+         
+         //[중요] 해당 게시글의 조회수(cnt)를 1 증가 시킨다.
+         String UPDATE_CNT = "update board set cnt=cnt+1 where seq=?";
+         pstmt = conn.prepareStatement(UPDATE_CNT);
+         pstmt.setInt(1, boardDO.getSeq());
+         pstmt.executeUpdate();	// DML 작업 시에는 executeUpdate로 호출
+         
+         //그런 다음 해당 게시글 가져오기
+         String BOARD_GET = "select * from board where seq=?";
+         pstmt = conn.prepareStatement(BOARD_GET);
+         pstmt.setInt(1, boardDO.getSeq());
+         rs = pstmt.executeQuery();
+         
+         if(rs.next()) {
+            board = new BoardDO();
+            
+            board.setSeq(rs.getInt("seq"));
+            board.setTitle(rs.getString("title"));
+            board.setWriter(rs.getString("writer"));
+            board.setContent(rs.getString("content"));
+            board.setRegdate(rs.getDate("regdate"));
+            board.setCnt(rs.getInt("cnt"));
+         }
+         
+         
+      } catch (Exception e) {
+         // TODO: handle exception
+         e.printStackTrace();
+      } finally {
+         JDBCUtil.close(rs, pstmt, conn);
+      }
+      
+      return board;
+   } // ======================================= end getBoard() =================================================
+   
+ //게시글 수정 처리 메소드
+   public int updateBoard(BoardDO boardDO) {
+      System.out.println("==> updateBoard() 처리됨!");
+      
+      int result=0;
+      try {
+         conn = JDBCUtil.getConnection();
+         
+         String BOARD_UPDATE = "update board set title=?, content=? where seq=?";
+         
+         pstmt = conn.prepareStatement(BOARD_UPDATE);
+         pstmt.setString(1, boardDO.getTitle());
+         pstmt.setString(2, boardDO.getContent());
+         pstmt.setInt(3, boardDO.getSeq());
+         
+         result = pstmt.executeUpdate();
+         
+      } catch (Exception e) {
+         // TODO: handle exception
+      } finally {
+         
+      }
+      
+      System.out.println(result);
+      return result;
+   } // ======================================= end updateBoard() =================================================
+   
+   
+   public void deleteBoard(BoardDO boardDO) {
+	   System.out.println("==> deleteBoard() 처리됨!");
+	   
+	   try {
+		   conn = JDBCUtil.getConnection();
+		   
+		   String BOARD_DELETE = "delete from board where seq=?";
+		   
+		   pstmt = conn.prepareStatement(BOARD_DELETE);
+		   pstmt.setInt(1, boardDO.getSeq());
+		   
+		   pstmt.executeUpdate();
+	   }catch (Exception e) {
+		// TODO: handle exception
+		   e.printStackTrace();
+	   }finally {
+		JDBCUtil.close(pstmt, conn);
+	   }
+   } // ======================================= end deleteBoard() =================================================
+   
+   
+   public void insertBoard(BoardDO boardDO) {
+	      System.out.println("==> insertBoard() 처리됨!");
+	      
+	      int result=0;
+	      try {
+	         conn = JDBCUtil.getConnection();
+	         
+	         String BOARD_INSERT = "insert into board(seq,title,writer,content) values((select nvl(max(seq),0)+1 from board),?,?,?)";
+	         // 게시글이 없어도 seq 는 1부터 시작해서 1씩 증가
+	         
+	         pstmt = conn.prepareStatement(BOARD_INSERT);
+	         pstmt.setString(1, boardDO.getTitle());
+	         pstmt.setString(2, boardDO.getContent());
+	         pstmt.setString(3, boardDO.getWriter());
+	         
+	         pstmt.executeUpdate();
+	         
+	         
+	      } catch (Exception e) {
+	    	  e.printStackTrace();
+	         // TODO: handle exception
+	      } finally {
+	         JDBCUtil.close(pstmt, conn);
+	      }
+	   } // ======================================= end insertBoard() =================================================
+	   
 }
  ```
 ### UserDAO.java
@@ -553,6 +672,189 @@ public class JDBCUtil {
       <a href="insertBoard.jsp">새 게시글 등록</a>
       <a href="getBoardList.jsp">전체 게시물 목록 보기</a>&nbsp;&nbsp;&nbsp;
    </div>
+</body>
+</html>
+```
+
+### updatetBoard_proc.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" errorPage="error.jsp"%>
+<!DOCTYPE html>
+<!--  자바 클래스 임포트  -->
+<%@ page import="board.BoardDO" %>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="java.util.List" %>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String seq = request.getParameter("seq");
+	String title = request.getParameter("title");
+	String content = request.getParameter("content");
+	
+	BoardDO boardDO = new BoardDO();
+	boardDO.setSeq(Integer.parseInt(seq));
+	boardDO.setTitle(title);
+	boardDO.setContent(content);
+	
+	BoardDAO boardDAO = new BoardDAO();
+	boardDAO.updateBoard(boardDO);
+	
+	response.sendRedirect("getBoardList.jsp");
+%>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>updateBoard_proc.jsp =? "수정" 컨트롤러 페이지</title>
+</head>
+<body>
+
+</body>
+</html>
+```
+
+### insertBoard.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" errorPage="error.jsp"%>
+<!DOCTYPE html>
+<!--  자바 클래스 임포트  -->
+<%@ page import="board.BoardDO" %>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="java.util.List" %>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>insertBoard.jsp => 게시글 등록 페이지</title>
+</head>
+<body>
+	<h1>새 게시글 등록</h1>
+	<a href="logout_proc.jsp">로그아웃</a>
+	<hr>
+	<form name="insertForm" method="POST" action="insertBoard_proc.jsp">
+		<table border="1" cellpadding="0" cellspacing="0">
+			<tr>
+				<td bgcolor="orange" width="70">제목</td>
+				<td align="left"><input type="text" name="title" /></td>
+			</tr>
+			
+			<tr>
+				<td bgcolor="orange">작성자</td>
+				<td align="left"><input type="text" name="writer" /></td>
+			</tr>
+			
+			<tr>
+				<td bgcolor="orange">내용</td>
+				<td align="left">
+					<textarea name="content" rows="10" cols="40"></textarea>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="글 등록" />
+				</td>
+			</tr>
+		</table>
+	</form>
+	<hr>
+	<a href="getBoardList.jsp">전체 게시글 목록 보기</a>
+</body>
+</html>
+```
+
+### insertBoard_proc.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!--  자바 클래스 임포트  -->
+<%@ page import="board.BoardDO" %>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="java.util.List" %>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String writer = request.getParameter("writer");
+	String title = request.getParameter("title");
+	String content = request.getParameter("content");
+	
+	BoardDO boardDO = new BoardDO();
+	boardDO.setWriter(writer);
+	boardDO.setTitle(title);
+	boardDO.setContent(content);
+	
+	BoardDAO boardDAO = new BoardDAO();
+	boardDAO.insertBoard(boardDO);
+	
+	response.sendRedirect("getBoardList.jsp");
+%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+</body>
+</html>
+```
+
+### deleteBoard_proc.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!--  자바 클래스 임포트  -->
+<%@ page import="board.BoardDO" %>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="java.util.List" %>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String seq = request.getParameter("seq");
+	
+	BoardDO boardDO = new BoardDO();
+	boardDO.setSeq(Integer.parseInt(seq));
+	
+	BoardDAO boardDAO = new BoardDAO();
+	boardDAO.deleteBoard(boardDO);
+	
+	response.sendRedirect("getBoardList.jsp");
+%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+</body>
+</html>
+```
+
+### logout_proc.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	// 1.브라우저에 연결된 세션 객체를 강제 종료(세션 무효화)
+	session.invalidate();
+
+	// 2. 세션 종료 후 로그인 페이지로 이동
+	response.sendRedirect("login.jsp");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>insert_proc.jsp 페이지 => 게시글 등록 컨트롤러 페이지</title>
+</head>
+<body>
+
 </body>
 </html>
 ```
