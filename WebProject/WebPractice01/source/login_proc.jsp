@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="error.jsp" %>
-<!-- 추가 -->
+<!-- 추가 자바 클래스 임포트-->
 <%@ page import="user.UserDO" %>
 <%@ page import="user.UserDAO" %>
 
