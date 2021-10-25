@@ -871,6 +871,12 @@ public class JDBCUtil {
 #### 검색 후 화면
 ![image](https://user-images.githubusercontent.com/49936027/138414445-5bf7ca73-24ba-4d13-994c-fbdd95112975.png)
 
+#### inset 새 게시글 등록
+![image](https://user-images.githubusercontent.com/49936027/138646471-83fcfa47-cee1-488b-b196-cab7b6778e8f.png)
+
+#### 게시글 상세보기 / 수정 화면 / 게시글 삭제 / 로그아웃
+![image](https://user-images.githubusercontent.com/49936027/138646509-da6f6c27-d0d6-46d7-a0a1-e38ed1be31c3.png)
+
 
 
 
