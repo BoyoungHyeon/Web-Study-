@@ -41,5 +41,5 @@
 
 ## Web 💻
 [Session과 Sesion의 주요 메서드](./WebPractice/Session/session.md)
-
+[Model1구조 CRUD  ](./WebProject/WebPractice01/Model1_Board.md)
 
